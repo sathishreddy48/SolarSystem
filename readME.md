@@ -1,24 +1,31 @@
-Sun and Moon Simulation in 3D Space
-Objective:
+# Sun and Moon Simulation in 3D Space
+
+## **Objective:**
 This project simulates the positions of the Sun and the Moon relative to Earth in 3D space, based on a specific location and time. The simulation places Earth at the center, with the Sun and Moon moving around it. Cardinal directions (N, S, E, W) are marked, and directional lines are drawn from Earth to the Sun and Moon to visualize their positions. The simulation also displays the azimuth and altitude angles for both the Sun and Moon.
 
-Key Features:
-3D Visualization: Earth is fixed at the center of the plot, while the Sun and Moon are shown at their respective positions above Earth.
-Sun and Moon Positions: Calculated based on the local time at a specific location (latitude and longitude).
-Directional Lines and Angles: Red and blue lines connect Earth to the Sun and Moon, respectively, with the azimuth and altitude angles annotated on the plot.
-Cardinal Directions: The plot includes North (N), South (S), East (E), and West (W) directions around Earth for better orientation.
-Dependencies:
+---
+
+## **Key Features:**
+- **3D Visualization:** Earth is fixed at the center of the plot, while the Sun and Moon are shown at their respective positions above Earth.
+- **Sun and Moon Positions:** Calculated based on the local time at a specific location (latitude and longitude).
+- **Directional Lines and Angles:** Red and blue lines connect Earth to the Sun and Moon, respectively, with the azimuth and altitude angles annotated on the plot.
+- **Cardinal Directions:** The plot includes North (N), South (S), East (E), and West (W) directions around Earth for better orientation.
+
+---
+
+## **Dependencies:**
 The following Python libraries are required to run the simulation:
+- `matplotlib` (for plotting)
+- `numpy` (for mathematical calculations)
+- `geopy` (for geolocation and retrieving coordinates based on location)
+- `datetime` (for time-related calculations)
 
-matplotlib (for plotting)
-numpy (for mathematical calculations)
-geopy (for geolocation and retrieving coordinates based on location)
-datetime (for time-related calculations)
-You can install the dependencies using pip:
+You can install the dependencies using `pip`:
 
-bash
-Copy code
+```bash
 pip install matplotlib numpy geopy
+
+
 Methodology:
 1. Geolocation and Local Time Calculation:
 Input: The user provides a location, which can be a country name or specific latitude/longitude coordinates.
@@ -54,8 +61,10 @@ Cardinal Directions:
 Labels for North (N), South (S), East (E), and West (W) are placed around Earth to help orient the plot.
 5. Plot Annotations:
 Angles:
+
 The azimuth and altitude angles for both the Sun and Moon are annotated on the plot. These angles are placed near the Sun and Moon, showing the observer's perspective.
 Directional Lines:
+
 Red lines connect Earth to the Sun, and blue lines connect Earth to the Moon, indicating their relative positions in the sky.
 Code Explanation:
 1. Geolocation and Time Calculation:
@@ -131,6 +140,4 @@ Cardinal directions (N, S, E, W)
 Directional lines indicating the position of the Sun and Moon
 Conclusion:
 This simulation effectively visualizes the positions of the Sun and the Moon based on the user’s location and current time. The 3D plot helps to understand the relative movement of these celestial bodies in the sky. The calculation of azimuth and altitude angles allows for an accurate representation of the Sun and Moon’s positions.
-
-Feel free to adjust the code or contribute improvements to enhance the simulation. You can fork or clone this repository to experiment with different models or add additional features, such as including other celestial bodies or improving the Sun and Moon movement models.
 
