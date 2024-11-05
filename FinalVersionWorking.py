@@ -100,8 +100,7 @@ moon_x, moon_y, moon_z = calculate_position(moon_azimuth, moon_altitude, moon_di
 fig = plt.figure(figsize=(14, 12))  # Increase the figure size
 ax = fig.add_subplot(111, projection='3d')
 
-# Plot Earth, Sun, and Moon with their respective sizes using spheres
-# Earth (small green sphere)
+# Plot Earth as a sphere at the bottom plane (z=0)
 u = np.linspace(0, 2 * np.pi, 100)
 v = np.linspace(0, np.pi, 100)
 x = earth_size * np.outer(np.cos(u), np.sin(v))
@@ -109,13 +108,13 @@ y = earth_size * np.outer(np.sin(u), np.sin(v))
 z = earth_size * np.outer(np.ones(np.size(u)), np.cos(v))
 ax.plot_surface(x, y, z, color='g', rstride=5, cstride=5, alpha=0.6, label="Earth")
 
-# Sun (large yellow sphere)
+# Sun (large yellow sphere) above Earth
 x_sun = sun_size * np.outer(np.cos(u), np.sin(v))
 y_sun = sun_size * np.outer(np.sin(u), np.sin(v))
 z_sun = sun_size * np.outer(np.ones(np.size(u)), np.cos(v))
 ax.plot_surface(x_sun + sun_x, y_sun + sun_y, z_sun + sun_z, color='yellow', rstride=5, cstride=5, alpha=0.9, label="Sun")
 
-# Moon (smaller gray sphere)
+# Moon (smaller gray sphere) above Earth
 x_moon = moon_size * np.outer(np.cos(u), np.sin(v))
 y_moon = moon_size * np.outer(np.sin(u), np.sin(v))
 z_moon = moon_size * np.outer(np.ones(np.size(u)), np.cos(v))
@@ -125,7 +124,7 @@ ax.plot_surface(x_moon + moon_x, y_moon + moon_y, z_moon + moon_z, color='gray',
 ax.plot([0, sun_x], [0, sun_y], [0, sun_z], 'r-', label="Earth-Sun line")
 ax.plot([0, moon_x], [0, moon_y], [0, moon_z], 'b-', label="Earth-Moon line")
 
-# Cardinal directions for Earth (N, E, S, W)
+# Cardinal directions for Earth (N, E, S, W) on the plot
 ax.text(earth_size * 1.5, 0, 0, 'E', color='black', fontsize=14, fontweight='bold')
 ax.text(-earth_size * 1.5, 0, 0, 'W', color='black', fontsize=14, fontweight='bold')
 ax.text(0, earth_size * 1.5, 0, 'N', color='black', fontsize=14, fontweight='bold')
@@ -138,21 +137,11 @@ ax.text(sun_x / 2, sun_y / 2, sun_z / 1.5, f'Sun Altitude: {sun_altitude:.2f}°'
 ax.text(moon_x / 2, moon_y / 2, moon_z / 2, f'Moon Azimuth: {moon_azimuth:.2f}°', color='blue', fontsize=12)
 ax.text(moon_x / 2, moon_y / 2, moon_z / 1.5, f'Moon Altitude: {moon_altitude:.2f}°', color='blue', fontsize=12)
 
-# Add some random stars for background
-num_stars = 100
-star_x = np.random.uniform(-1.5, 1.5, num_stars)
-star_y = np.random.uniform(-1.5, 1.5, num_stars)
-star_z = np.random.uniform(-1.5, 1.5, num_stars)
-ax.scatter(star_x, star_y, star_z, color='white', s=1, alpha=0.7, label="Stars")
+# Set plot labels and title
+ax.set_xlabel('X (East-West)', fontsize=14)
+ax.set_ylabel('Y (North-South)', fontsize=14)
+ax.set_zlabel('Z (Altitude)', fontsize=14)
+ax.set_title('Sun and Moon Simulation (Fixed Earth)', fontsize=16)
 
-# Labels and title
-ax.set_xlabel("X (East-West)")
-ax.set_ylabel("Y (North-South)")
-ax.set_zlabel("Z (Altitude)")
-ax.set_title(f"Sun & Moon Positions - {location_input} at {local_hour:.2f} hours")
-
-# Show legend
-ax.legend()
-
-# Display the plot
+# Show plot
 plt.show()
