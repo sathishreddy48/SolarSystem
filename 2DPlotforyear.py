@@ -43,6 +43,7 @@ def get_coordinates(location):
 location_input = input("Enter location (country or latitude,longitude): ")
 
 # Determine if the input is a pair of coordinates or a country name
+#Home Location 17.612778, 80.042167
 if ',' in location_input:
     try:
         lat, lon = map(float, location_input.split(','))
@@ -84,8 +85,9 @@ for day in range(1, 366):  # 1 to 365 for a year
 
     # Add day labels for every 30 days (or adjust as needed)
     if day % 15 == 0:
-        ax.text(sun_x, sun_y, str(day), color="red", fontsize=8, ha='center')
-        ax.text(moon_x, moon_y, str(day), color="blue", fontsize=8, ha='center')
+        ax.text(sun_x + 0.03, sun_y + 0.05, str(day), color="red", fontsize=8, ha='center')
+        ax.text(moon_x , moon_y + 0.05, str(day), color="blue", fontsize=8, ha='center')
+  
 
 # Plot the paths
 ax.plot(sun_path_x, sun_path_y, 'r-', label="Sun's Path (Annual)")
