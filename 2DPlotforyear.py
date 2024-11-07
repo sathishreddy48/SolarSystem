@@ -83,11 +83,15 @@ for day in range(1, 366):  # 1 to 365 for a year
     moon_path_x.append(moon_x)
     moon_path_y.append(moon_y)
 
-    # Add day labels for every 30 days (or adjust as needed)
+    # Draw lines between Sun and Moon for each day (or every 15 days)
+    if day % 15 == 0:  # Optional: Change this condition to adjust how frequently you draw lines
+        color = plt.cm.viridis(day / 365)  # Change color dynamically based on the day of the year
+        ax.plot([sun_x, moon_x], [sun_y, moon_y], color=color, lw=1)  # Line between Sun and Moon
+
+    # Optional: Add day labels for every 30 days
     if day % 15 == 0:
         ax.text(sun_x + 0.03, sun_y + 0.05, str(day), color="red", fontsize=8, ha='center')
         ax.text(moon_x , moon_y + 0.05, str(day), color="blue", fontsize=8, ha='center')
-  
 
 # Plot the paths
 ax.plot(sun_path_x, sun_path_y, 'r-', label="Sun's Path (Annual)")
