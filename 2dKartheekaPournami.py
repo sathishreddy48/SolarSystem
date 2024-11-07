@@ -56,7 +56,7 @@ else:
         exit(1)
 
 # Setup a 2D grid plot
-fig, ax = plt.subplots(figsize=(10, 10))
+fig, ax = plt.subplots(figsize=(100, 100))
 ax.set_xlim(-1.5, 1.5)
 ax.set_ylim(-1.5, 1.5)
 ax.set_aspect('equal', 'box')
