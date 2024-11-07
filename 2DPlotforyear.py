@@ -75,7 +75,7 @@ for day in range(1, 366):  # 1 to 365 for a year
     # Get positions at noon for each day
     sun_x, sun_y = sun_position(day, lat)
     moon_x, moon_y = moon_position(day)
-    
+
     # Store the positions
     sun_path_x.append(sun_x)
     sun_path_y.append(sun_y)
@@ -83,7 +83,7 @@ for day in range(1, 366):  # 1 to 365 for a year
     moon_path_y.append(moon_y)
 
     # Add day labels for every 30 days (or adjust as needed)
-    if day % 1 == 10:
+    if day % 15 == 0:
         ax.text(sun_x, sun_y, str(day), color="red", fontsize=8, ha='center')
         ax.text(moon_x, moon_y, str(day), color="blue", fontsize=8, ha='center')
 
