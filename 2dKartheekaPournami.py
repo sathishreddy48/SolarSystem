@@ -43,7 +43,6 @@ def get_coordinates(location):
 location_input = input("Enter location (country or latitude,longitude): ")
 
 # Determine if the input is a pair of coordinates or a country name
-#Home Location 17.612778, 80.042167
 if ',' in location_input:
     try:
         lat, lon = map(float, location_input.split(','))
@@ -75,7 +74,7 @@ moon_path_y = []
 for day in range(1, 366):  # 1 to 365 for a year
     # Get positions at noon for each day
     sun_x, sun_y = sun_position(day, lat)
-    moon_x, moon_y = moon_position(day)
+    moon_x, moon_y = moon_position(day, 12)  # Get Moon's position at noon
 
     # Store the positions
     sun_path_x.append(sun_x)
@@ -120,7 +119,7 @@ moon_path_15nov_y = []
 
 # Loop through the 24 hours of 15th November 2024 (00:00 to 23:00)
 for hour in range(24):
-    moon_x, moon_y = moon_position(day_of_year, hour)
+    moon_x, moon_y = moon_position(day_of_year, hour)  # Corrected to pass both arguments
     moon_path_15nov_x.append(moon_x)
     moon_path_15nov_y.append(moon_y)
 
